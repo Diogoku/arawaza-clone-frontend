@@ -38,7 +38,8 @@ function Header() {
   const [user, setUser] = useState("");
 
   useEffect(() => {
-    axios
+    const fetchUserData = async = () => {
+      const result = await axios
       .get(`${process.env.REACT_APP_API_URL}/auth/login/success`, {
         credentials: "include",
         headers: {
@@ -62,6 +63,8 @@ function Header() {
         setUser("");
         console.log(error);
       });
+    }
+    fetchUserData();
   }, []);
 
   const auth = (e) => {
