@@ -54,6 +54,7 @@ function Header() {
           console.log(response);
           setUser(response.data.user);
         } else {
+          console.log(response);
           console.log("failed to authenticate user");
           setUser("");
         }
@@ -69,7 +70,10 @@ function Header() {
     e.preventDefault();
     if (user)
       window.open(`${process.env.REACT_APP_API_URL}/auth/logout`, "_self");
-    else window.open(`${process.env.REACT_APP_API_URL}/auth/google`, "_self");
+    else {
+      console.log("vim aqui");
+      window.open(`${process.env.REACT_APP_API_URL}/auth/google`, "_self");
+    }
   };
 
   const classes = useStyles();
