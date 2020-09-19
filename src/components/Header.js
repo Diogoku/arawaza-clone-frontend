@@ -39,7 +39,7 @@ function Header() {
 
   useEffect(() => {
     axios
-      .get(`/auth/login/success`, {
+      .get(`${process.env.REACT_APP_API_URL}/auth/login/success`, {
         credentials: "include",
         headers: {
           Accept: "application/json",
@@ -65,8 +65,9 @@ function Header() {
 
   const auth = (e) => {
     e.preventDefault();
-    if (user) window.open("http://localhost:9000/auth/logout", "_self");
-    else window.open("http://localhost:9000/auth/google", "_self");
+    if (user)
+      window.open(`${process.env.REACT_APP_API_URL}/auth/logout`, "_self");
+    else window.open(`${process.env.REACT_APP_API_URL}/auth/google`, "_self");
   };
 
   const classes = useStyles();
