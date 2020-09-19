@@ -64,6 +64,8 @@ function Header() {
         console.log(error);
       });
     }
+    const res = await request.json();
+    console.log(res);
     fetchUserDatas();
   }, []);
 
