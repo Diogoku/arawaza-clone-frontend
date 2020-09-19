@@ -39,7 +39,7 @@ function Header() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}//auth/login/success`, {
+      .get(`${process.env.REACT_APP_API_URL}/auth/login/success`, {
         credentials: "include",
         headers: {
           Accept: "application/json",
