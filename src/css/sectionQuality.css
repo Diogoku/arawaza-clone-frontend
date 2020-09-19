@@ -1,0 +1,40 @@
+.sectionQuality {
+  padding: 80px 0 103px;
+  background: #f2f2f2
+    url("https://arawaza.com/wp-content/themes/basel-child/images/arawaza-quality-fast-shipping-passionate-martial-equipment-bg.jpg")
+    no-repeat center left;
+  background-size: auto 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.sectionQuality__container {
+  padding: 0 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+/* RESPONSIVE */
+@media only screen and (min-width: 992px) {
+  .sectionQuality__container {
+    width: 970px;
+  }
+}
+
+@media only screen and (max-width: 991px) and (min-width: 768px) {
+  .sectionQuality__container {
+    flex-wrap: wrap;
+    width: 750px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .sectionQuality {
+    padding: 20px 0;
+  }
+
+  .sectionQuality__container {
+    flex-wrap: wrap;
+    max-width: 90%;
+  }
+}

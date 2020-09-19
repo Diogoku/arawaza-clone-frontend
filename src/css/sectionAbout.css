@@ -1,0 +1,54 @@
+.sectionAbout {
+  padding: 75px 0;
+  background: url("https://arawaza.com/wp-content/themes/basel-child/images/arawaza-about-us-martial-equipment-bg.jpg")
+    no-repeat center center / cover;
+}
+
+.sectionAbout > .MuiContainer-root {
+  display: flex !important;
+  padding: 0 15px;
+  column-gap: 150px;
+}
+
+.sectionAbout > .MuiContainer-root > img {
+  object-fit: contain;
+  width: 100%;
+}
+
+.sectionAbout__content {
+  font-family: "Karla", sans-serif;
+  color: #1f1f1f;
+}
+
+.sectionAbout__arawazaLogo {
+  padding: 75px 0;
+}
+
+.sectionAbout__content > p {
+  margin-bottom: 20px;
+}
+
+.sectionAbout__content > p > strong {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.sectionAbout__content > p > .MuiButton-root {
+  background-color: #9b9b9b;
+  color: #ffffff;
+  font-family: "Karla", sans-serif;
+  font-weight: 800;
+}
+
+/* RESPONSIVE */
+
+@media only screen and (max-width: 990px) {
+  .sectionAbout > .MuiContainer-root {
+    max-width: 90%;
+    flex-direction: column;
+  }
+
+  .sectionAbout__arawazaLogo {
+    padding: 40px 0 25px;
+  }
+}

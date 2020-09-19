@@ -1,0 +1,41 @@
+.mainFooter {
+  font-family: "Karla", sans-serif;
+}
+
+.footer {
+  background-color: #090a10;
+  padding: 0 7rem 0 7rem;
+}
+
+.footer__bottom {
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 15px;
+  color: #424244;
+  font-size: 14px;
+}
+
+.footer__paymentsLogos {
+  max-width: 220px;
+}
+
+/* RESPONSIVE */
+
+@media only screen and (max-width: 800px) {
+  .footer {
+    padding: 0 1.5rem 0 1.5rem;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    padding: 20px;
+    margin: 0 15px;
+    text-align: center;
+  }
+
+  .footer__paymentsLogos {
+    margin: 0 28px 15px;
+  }
+}

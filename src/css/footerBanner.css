@@ -1,0 +1,159 @@
+.footerBanner {
+  display: flex;
+  width: 100%;
+}
+
+.footerBanner__content {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.footerBanner__contentLeft {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://arawaza.com/wp-content/themes/basel-child/images/arawaza-professionnal-martial-arts-equipment-videos.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform 0.6s ease-out;
+}
+
+.footerBanner__contentLeft:hover {
+  transform: scale(1.2);
+}
+
+.footerBanner__contentLeft::before {
+  content: "";
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.footerBanner__contentLeft:hover::before {
+  display: block;
+}
+
+.footerBanner__leftMini {
+  position: absolute;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* RIGHT */
+
+/*.footerBanner__contentRight:hover {
+  transform: scale(1.08);
+}
+
+.footerBanner__contentRight::before {
+  content: "";
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.footerBanner__contentRight:hover::before {
+  display: block;
+}*/
+
+.footerBanner__rightMini {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  overflow: hidden;
+}
+
+.footerBanner__rightMini > img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease-out;
+}
+
+.footerBanner__rightMini:hover img {
+  transform: scale(1.2);
+}
+
+.footerBanner__rightMini__content {
+  position: absolute;
+  text-transform: uppercase;
+}
+
+.footerBanner__rightMini__content > h4 {
+  font-size: 32px;
+  font-weight: bolder;
+  color: #ffffff;
+}
+
+.footerBanner__rightMini__content > h4 > span {
+  background-color: #ca0017;
+  font-size: 22px;
+  font-weight: bolder;
+  margin: -5px 0 0;
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.footerBanner__rightMini__content > p {
+  font-size: 18px;
+  font-weight: bolder;
+  color: #c8c8c8;
+  margin-bottom: 20px;
+}
+
+.footerBanner__rightMini__content > form {
+  display: flex;
+  border-bottom: 1px solid #ffffff;
+  padding-bottom: 2px;
+  pointer-events: fill;
+}
+
+.footerBanner__rightMini__content > form > input {
+  border: none;
+  background-color: unset;
+  color: #c9c9c9;
+  outline: none;
+}
+
+.footerBanner__rightMini__content > form > .MuiButton-root {
+  border: none;
+  background-color: unset;
+  outline: unset;
+  color: white;
+  font-weight: bolder;
+}
+
+.footerBanner__rightMini__content > form > .MuiButton-root:hover {
+  background-color: #9b9b9b;
+}
+
+/* RESPONSIVE */
+
+@media only screen and (max-width: 749px) {
+  .footerBanner {
+    flex-direction: column;
+  }
+}

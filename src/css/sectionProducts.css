@@ -1,0 +1,193 @@
+.sectionProducts {
+  padding: 105px 0 115px;
+  background: #838c93
+    url("https://arawaza.com/wp-content/themes/basel-child/images/bg-produits.jpg")
+    no-repeat top center;
+  display: flex;
+  justify-content: center;
+}
+
+.sectionProducts__container {
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionProducts__containerPromotion {
+  display: flex;
+}
+
+.sectionProducts__containerPromotionLeft {
+  width: 50%;
+}
+
+.sectionProducts__containerPromotionImage {
+  margin-top: -103px;
+  margin-bottom: -130px;
+  margin-left: -118px;
+  width: 750px;
+}
+
+.sectionProducts__containerPromotionRight {
+  width: 50%;
+}
+
+.sectionProducts__containerPromotionRight > h2 {
+  font-size: 40px;
+  color: #000000;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.winners {
+  font-size: 102px;
+  color: #345bd0;
+  font-weight: 800;
+}
+
+.sectionProducts__containerPromotionRight > p {
+  font-family: "Karla", sans-serif;
+  color: #1f1f1f;
+  font-size: 16px;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* HEADER PRODUCTS */
+.sectionProducts__container__headerProducts {
+  font-family: "Karla", sans-serif;
+  text-align: right;
+  margin-top: 42px;
+}
+
+.btn__feature {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.27);
+  padding: 10px 25px;
+  display: inline-block;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  width: 395px;
+  text-align: left;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+.sectionProducts__viewAll {
+  margin-left: 2px;
+  font-size: 19px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #ffffff;
+  text-transform: uppercase;
+  background: #345bd0;
+  padding: 15px 30px 11px;
+  display: inline-block;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  position: relative;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+.sectionProducts__viewAll > .MuiSvgIcon-root {
+  font-size: 17px;
+  font-weight: normal;
+  right: 15px;
+  opacity: 0.5;
+}
+
+.sectionProducts__viewAll:hover {
+  background: #2647aa;
+}
+
+/* CONTENT PRODUCTS */
+
+.contentProducts {
+  background: #fff;
+  border-radius: 3px;
+  padding: 40px 40px 0;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+.contentProducts__container {
+  min-height: 300px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  column-gap: 2.5rem;
+}
+
+/* RESPONSIVE */
+@media only screen and (min-width: 992px) {
+  .sectionProducts__container {
+    width: 970px;
+  }
+}
+
+@media only screen and (min-width: 778px) and (max-width: 991px) {
+  .sectionProducts__container {
+    width: 750px;
+  }
+}
+
+@media only screen and (max-width: 990px) {
+  .sectionProducts {
+    padding: 10px 0 30px;
+  }
+
+  .sectionProducts__container {
+    max-width: 90%;
+  }
+
+  .sectionProducts__containerPromotionRight > h2 {
+    font-size: 27px;
+  }
+
+  .winners {
+    display: block;
+    font-size: 58px;
+  }
+
+  .sectionProducts__containerPromotion {
+    flex-direction: column;
+  }
+
+  .sectionProducts__containerPromotionLeft {
+    width: 100%;
+  }
+
+  .sectionProducts__containerPromotionImage {
+    margin: auto;
+    width: 100%;
+  }
+
+  .sectionProducts__containerPromotionRight {
+    width: 100%;
+  }
+
+  .btn__feature {
+    font-size: 16px;
+    width: 230px;
+  }
+
+  .sectionProducts__viewAll {
+    font-size: 16px;
+    padding: 10px 30px 11px;
+  }
+
+  .sectionProducts__viewAll > .MuiSvgIcon-root {
+    font-size: 12px;
+  }
+}

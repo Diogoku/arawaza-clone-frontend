@@ -1,0 +1,45 @@
+.sectionQualityCard {
+  text-align: center;
+  padding: 0 15px;
+}
+
+.sectionQualityCard__image {
+  max-width: 100%;
+  margin-bottom: 20px;
+  vertical-align: middle;
+  display: inline-block !important;
+}
+
+.sectionQualityCard__text {
+  margin-bottom: 20px;
+  font-family: "Karla", sans-serif;
+  font-size: 14px;
+  color: #4c4c4c;
+}
+
+.sectionQualityCard > h3 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #000000;
+  text-transform: uppercase;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+/* RESPONSIVE */
+
+@media only screen and (max-width: 990px) {
+  .sectionQualityCard__image {
+    margin-bottom: 15px;
+  }
+
+  .sectionQualityCard > h3 {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .sectionQualityCard > h3 {
+    font-size: 12px;
+  }
+}
