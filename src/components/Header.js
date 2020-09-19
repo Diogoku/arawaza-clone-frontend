@@ -38,8 +38,7 @@ function Header() {
   const [user, setUser] = useState("");
 
   useEffect(() => {
-    const fetchUserDatas = async = () => {
-      const result = await axios
+    axios
       .get(`${process.env.REACT_APP_API_URL}/auth/login/success`, {
         credentials: "include",
         headers: {
@@ -63,10 +62,6 @@ function Header() {
         setUser("");
         console.log(error);
       });
-    }
-    const res = await request.json();
-    console.log(res);
-    fetchUserDatas();
   }, []);
 
   const auth = (e) => {
@@ -74,7 +69,7 @@ function Header() {
     if (user)
       window.open(`${process.env.REACT_APP_API_URL}/auth/logout`, "_self");
     else {
-      console.log("vim aqui", `${process.env.REACT_APP_API_URL}/auth/google`);
+      console.log("vim aqui");
       window.open(`${process.env.REACT_APP_API_URL}/auth/google`, "_self");
     }
   };
