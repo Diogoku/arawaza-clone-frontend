@@ -38,10 +38,8 @@ function Header() {
   const [user, setUser] = useState("");
 
   useEffect(() => {
-    console.log(process.env.REACT_APP_API_URL);
-    console.log(process.env.REACT_APP_API_URL + "/auth/login/success");
     axios
-      .get(`${process.env.REACT_APP_API_URL}/auth/login/success`, {
+      .get(`${process.env.REACT_APP_API_URL}//auth/login/success`, {
         credentials: "include",
         headers: {
           Accept: "application/json",
