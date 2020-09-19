@@ -69,7 +69,6 @@ function Header() {
     if (user)
       window.open(`${process.env.REACT_APP_API_URL}/auth/logout`, "_self");
     else {
-      console.log("vim aqui");
       window.open(`${process.env.REACT_APP_API_URL}/auth/google`, "_self");
     }
   };

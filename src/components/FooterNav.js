@@ -45,7 +45,13 @@ function FooterNav() {
   return (
     <div className="footerNav">
       {Object.keys(navLists).map((navList) => {
-        return <FooterNavList title={navList} listLinks={navLists[navList]} />;
+        return (
+          <FooterNavList
+            key={navList}
+            title={navList}
+            listLinks={navLists[navList]}
+          />
+        );
       })}
 
       <div className="footerNav__contact">

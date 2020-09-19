@@ -20,7 +20,6 @@ function SectionProductCard({
           onMouseOut={(e) => (e.currentTarget.src = image)}
           className="sectionProductCard__image"
           src={src}
-          alt
         />
       </a>
       <h3 className="sectionProductCard__productTittle">
