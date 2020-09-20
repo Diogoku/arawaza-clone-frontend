@@ -140,9 +140,7 @@ function Header() {
         <ListItem>
           {!user ? (
             <GoogleLogin
-              client_id={
-                "1972476073-aajknmdsgjreh6pev7dqanq24e0aa1pi.apps.googleusercontent.com"
-              }
+              client_id={process.env.REACT_APP_GOOGLE_CLIENT_ID}
               buttonText="Login"
               onSuccess={responseGoogleLogin}
               onFailure={responseGoogleLogin}
@@ -151,9 +149,7 @@ function Header() {
             />
           ) : (
             <GoogleLogout
-              client_id={
-                "1972476073-aajknmdsgjreh6pev7dqanq24e0aa1pi.apps.googleusercontent.com"
-              }
+              client_id={process.env.REACT_APP_GOOGLE_CLIENT_ID}
               buttonText="Logout"
               onLogoutSuccess={responseGoogleLogout}
             />
@@ -255,9 +251,7 @@ function Header() {
           <li className="header__rightItem">
             {!user ? (
               <GoogleLogin
-                client_id={
-                  "1972476073-aajknmdsgjreh6pev7dqanq24e0aa1pi.apps.googleusercontent.com"
-                }
+                client_id={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                 buttonText="Login"
                 onSuccess={responseGoogleLogin}
                 onFailure={responseGoogleLogin}
@@ -266,9 +260,7 @@ function Header() {
               />
             ) : (
               <GoogleLogout
-                client_id={
-                  "1972476073-aajknmdsgjreh6pev7dqanq24e0aa1pi.apps.googleusercontent.com"
-                }
+                client_id={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                 buttonText="Logout"
                 onLogoutSuccess={responseGoogleLogout}
               />
