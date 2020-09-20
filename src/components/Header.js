@@ -107,8 +107,6 @@ function Header() {
     "Promotions",
   ];
 
-  console.log(process.env.REACT_APP_GOOGLE_CLIENT_ID, "google client id");
-
   const list = (anchor) => (
     <div role="presentation" className="responsiveMenu">
       <List>
@@ -142,7 +140,9 @@ function Header() {
         <ListItem>
           {!user ? (
             <GoogleLogin
-              client_id={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+              client_id={
+                "1972476073-aajknmdsgjreh6pev7dqanq24e0aa1pi.apps.googleusercontent.com"
+              }
               buttonText="Login"
               onSuccess={responseGoogleLogin}
               onFailure={responseGoogleLogin}
@@ -151,7 +151,9 @@ function Header() {
             />
           ) : (
             <GoogleLogout
-              client_id={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+              client_id={
+                "1972476073-aajknmdsgjreh6pev7dqanq24e0aa1pi.apps.googleusercontent.com"
+              }
               buttonText="Logout"
               onLogoutSuccess={responseGoogleLogout}
             />
@@ -253,7 +255,9 @@ function Header() {
           <li className="header__rightItem">
             {!user ? (
               <GoogleLogin
-                client_id={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                client_id={
+                  "1972476073-aajknmdsgjreh6pev7dqanq24e0aa1pi.apps.googleusercontent.com"
+                }
                 buttonText="Login"
                 onSuccess={responseGoogleLogin}
                 onFailure={responseGoogleLogin}
@@ -262,7 +266,9 @@ function Header() {
               />
             ) : (
               <GoogleLogout
-                client_id={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                client_id={
+                  "1972476073-aajknmdsgjreh6pev7dqanq24e0aa1pi.apps.googleusercontent.com"
+                }
                 buttonText="Logout"
                 onLogoutSuccess={responseGoogleLogout}
               />

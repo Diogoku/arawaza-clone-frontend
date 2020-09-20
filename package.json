@@ -22,7 +22,6 @@
     "redux-devtools-extension": "^2.13.8",
     "styled-components": "^5.2.0"
   },
-  "proxy": "http://localhost:9000",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
