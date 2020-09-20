@@ -140,7 +140,7 @@ function Header() {
         <ListItem>
           {!user ? (
             <GoogleLogin
-              clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+              client_id={process.env.REACT_APP_GOOGLE_CLIENT_ID}
               buttonText="Login"
               onSuccess={responseGoogleLogin}
               onFailure={responseGoogleLogin}
@@ -149,7 +149,7 @@ function Header() {
             />
           ) : (
             <GoogleLogout
-              clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+              client_id={process.env.REACT_APP_GOOGLE_CLIENT_ID}
               buttonText="Logout"
               onLogoutSuccess={responseGoogleLogout}
             />
@@ -251,7 +251,7 @@ function Header() {
           <li className="header__rightItem">
             {!user ? (
               <GoogleLogin
-                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                client_id={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                 buttonText="Login"
                 onSuccess={responseGoogleLogin}
                 onFailure={responseGoogleLogin}
@@ -260,7 +260,7 @@ function Header() {
               />
             ) : (
               <GoogleLogout
-                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                client_id={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                 buttonText="Logout"
                 onLogoutSuccess={responseGoogleLogout}
               />
