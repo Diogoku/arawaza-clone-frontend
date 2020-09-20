@@ -17,7 +17,9 @@ function SectionProducts() {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await axios.get("/product/");
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/product/`
+      );
       if (response.status === 200) setProducts(response.data.products);
     };
     fetchProducts();
