@@ -107,6 +107,8 @@ function Header() {
     "Promotions",
   ];
 
+  console.log(process.env.REACT_APP_GOOGLE_CLIENT_ID, "google client id");
+
   const list = (anchor) => (
     <div role="presentation" className="responsiveMenu">
       <List>
