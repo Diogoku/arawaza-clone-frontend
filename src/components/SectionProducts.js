@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+// AXIOS
+import axios from "axios";
 
 // COMPONENTS
 import SectionProductCard from "./SectionProductCard";
@@ -10,47 +13,15 @@ import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import "../css/sectionProducts.css";
 
 function SectionProducts() {
-  const OnyxZero = {
-    productTitle: "Arawaza Onyx Zero Gravity, Karate",
-    image:
-      "https://arawaza.com/wp-content/uploads/2019/10/uniform-onyxzero-expert-arawaza-300x300.jpg",
-    imageHover:
-      "https://arawaza.com/wp-content/uploads/2019/11/uniform-onyxzero-expert-arawaza-1-300x300.jpg",
-    price: <span className="price">&#36;174.16 - &#36;181.66</span>,
-    productLink:
-      "https://arawaza.com/product/arawaza-onyx-zero-gravity-karate/",
-  };
+  const [products, setProducts] = useState([]);
 
-  const kataGi = {
-    productTitle: "Arawaza Black Diamond, Karate",
-    image:
-      "https://arawaza.com/wp-content/uploads/2019/10/uniform-blackdiamond-expert-white-arawaza-300x300.jpg",
-    imageHover:
-      "https://arawaza.com/wp-content/uploads/2019/11/uniform-blackdiamond-expert-white-arawaza-1-300x300.jpg",
-    price: <span className="price">&#36;196.16 - &#36;204.40</span>,
-    productLink: "https://arawaza.com/product/arawaza-black-diamond-karate/",
-  };
-
-  const arawazaBag = {
-    productTitle: "Arawaza All - Around technical sport bag",
-    image:
-      "https://arawaza.com/wp-content/uploads/2019/10/bag-sport-allaround-technical-arawaza-300x300.jpg",
-    imageHover:
-      "https://arawaza.com/wp-content/uploads/2019/11/bag-sport-allaround-technical-arawaza-1-300x300.jpg",
-    price: <span className="price">&#36;120</span>,
-    productLink:
-      "https://arawaza.com/product/arawaza-all-around-technical-sport-bag/",
-  };
-
-  const arawazaGloves = {
-    productTitle: "Arawaza WKF Approved Fist Gear",
-    image:
-      "https://arawaza.com/wp-content/uploads/2019/10/fist-gear-wkf-approved-arawaza-300x300.jpg",
-    imageHover:
-      "https://arawaza.com/wp-content/uploads/2020/05/fist-gear-wkf-approved-arawaza-red-1-300x300.jpg",
-    price: <span className="price">&#36;37.03</span>,
-    productLink: "https://arawaza.com/product/arawaza-wkf-approved-fist-gear/",
-  };
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const response = await axios.get("/product/");
+      if (response.status === 200) setProducts(response.data.products);
+    };
+    fetchProducts();
+  }, []);
 
   return (
     <div className="sectionProducts">
@@ -87,34 +58,16 @@ function SectionProducts() {
         </div>
         <div className="contentProducts">
           <div className="contentProducts__container">
-            <SectionProductCard
-              productTitle={OnyxZero.productTitle}
-              image={OnyxZero.image}
-              imageHover={OnyxZero.imageHover}
-              price={OnyxZero.price}
-              productLink={OnyxZero.productLink}
-            />
-            <SectionProductCard
-              productTitle={kataGi.productTitle}
-              image={kataGi.image}
-              imageHover={kataGi.imageHover}
-              price={kataGi.price}
-              productLink={kataGi.productLink}
-            />
-            <SectionProductCard
-              productTitle={arawazaBag.productTitle}
-              image={arawazaBag.image}
-              imageHover={arawazaBag.imageHover}
-              price={arawazaBag.price}
-              productLink={arawazaBag.productLink}
-            />
-            <SectionProductCard
-              productTitle={arawazaGloves.productTitle}
-              image={arawazaGloves.image}
-              imageHover={arawazaGloves.imageHover}
-              price={arawazaGloves.price}
-              productLink={arawazaGloves.productLink}
-            />
+            {products.map((product) => (
+              <SectionProductCard
+                key={product._id}
+                title={product.name}
+                image={product.thumbnail}
+                imageHover={product.imageHover}
+                price={product.price}
+                link={product.link}
+              />
+            ))}
           </div>
         </div>
       </div>

@@ -12,7 +12,10 @@ function SectionAbout() {
   return (
     <div className="sectionAbout">
       <Container className="sectionAbout__container">
-        <img src="https://arawaza.com/wp-content/themes/basel-child/images/discover-arawaza-martial-arts-equipment.png" />
+        <img
+          src="https://arawaza.com/wp-content/themes/basel-child/images/discover-arawaza-martial-arts-equipment.png"
+          alt="Discover Arawaza martial arts equipment"
+        />
         <div className="sectionAbout__content">
           <p>
             <img

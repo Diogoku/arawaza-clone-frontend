@@ -1,7 +1,13 @@
 import React from "react";
 
+// REACT-REDUX
+import { Provider } from "react-redux";
+import store from "../store";
+
 // COMPONENTS
 import Header from "./Header";
+import Login from "./Login";
+import Logout from "./Logout";
 import Hero from "./Hero";
 import SectionQuality from "./SectionQuality";
 import SectionProducts from "./SectionProducts";
@@ -17,7 +23,6 @@ function App() {
     title: "Own a martial arts club?",
     text: [
       `Take advantage of our wholesale prices.`,
-      <br />,
       ` Our wholesale prices are available to club head instructors only.`,
     ],
     contentType: "wholesale",
@@ -34,29 +39,33 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Header />
-      <Hero />
-      <SectionQuality />
-      <SectionProducts />
-      <SectionCTA
-        title={sectionWholesale.title}
-        text={sectionWholesale.text}
-        contentType={sectionWholesale.contentType}
-        link={sectionWholesale.link}
-        linkText={sectionWholesale.linkText}
-      />
-      <SectionAbout />
-      <SectionCTA
-        title={sectionArawazaStore.title}
-        text={sectionArawazaStore.text}
-        contentType={sectionArawazaStore.contentType}
-        link={sectionArawazaStore.link}
-        linkText={sectionArawazaStore.linkText}
-      />
-      {/*<button onClick={auth}>Sign In with Google</button>*/}
-      <Footer />
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Header />
+        <Hero />
+        <SectionQuality />
+        <SectionProducts />
+        <SectionCTA
+          title={sectionWholesale.title}
+          text={sectionWholesale.text}
+          contentType={sectionWholesale.contentType}
+          link={sectionWholesale.link}
+          linkText={sectionWholesale.linkText}
+        />
+        <SectionAbout />
+        <SectionCTA
+          title={sectionArawazaStore.title}
+          text={sectionArawazaStore.text}
+          contentType={sectionArawazaStore.contentType}
+          link={sectionArawazaStore.link}
+          linkText={sectionArawazaStore.linkText}
+        />
+        {/*<button onClick={auth}>Sign In with Google</button>*/}
+        <Login />
+        <Logout />
+        <Footer />
+      </div>
+    </Provider>
   );
 }
 

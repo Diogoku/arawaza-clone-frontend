@@ -10,16 +10,12 @@ function SectionCTA({ title, text, contentType, link, linkText }) {
       <div className="sectionCTA__content">
         <div className="sectionCTA__contentLeft">
           <h2>{title}</h2>
-          <p>
-            {text.map((line) => {
-              return line;
-            })}
-          </p>
+          {text.map((line, index) => {
+            return <p key={index}>{line}</p>;
+          })}
         </div>
         <div className="sectionCTA__contentRight">
-          <a href={link} target="_blank">
-            {linkText}
-          </a>
+          <a href={link}>{linkText}</a>
         </div>
       </div>
     </section>

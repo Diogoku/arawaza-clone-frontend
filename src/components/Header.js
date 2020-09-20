@@ -1,10 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 // AXIOS
 import axios from "axios";
 
+// REACT-REDUX
+import { useDispatch } from "react-redux";
+import { login, logout } from "../actions/userActionsCreator";
+
+// REACT GOOGLE OAUTH
+import { GoogleLogin, GoogleLogout } from "react-google-login";
+
 // MATERIAL-UI
 import { makeStyles } from "@material-ui/core/styles";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 import Chip from "@material-ui/core/Chip";
 import Avatar from "@material-ui/core/Avatar";
 import Drawer from "@material-ui/core/Drawer";
@@ -23,6 +32,10 @@ import Badge from "@material-ui/core/Badge";
 // CSS
 import "../css/header.css";
 
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 const useStyles = makeStyles((theme) => ({
   nested: {
     paddingLeft: theme.spacing(4),
@@ -35,51 +48,35 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Header() {
+  // DISPATCH
+  const dispatch = useDispatch();
+
+  // USER
   const [user, setUser] = useState("");
 
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/auth/login/success`, {
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true,
-        },
-      })
-      .then((response) => {
-        if (response.status === 200 && response.data.user) {
-          console.log(response);
-          setUser(response.data.user);
-        } else {
-          console.log(response);
-          console.log("failed to authenticate user");
-          setUser("");
-        }
-        //if (response.status === 200) return response.json();
-      })
-      .catch((error) => {
-        setUser("");
-        console.log(error);
-      });
-  }, []);
+  // LOGIN / LOGOUT ALERT MESSAGE
+  const [openLoginAlertMessage, setOpenLoginAlertMessage] = useState(false);
+  const [openLogoutAlertMessage, setOpenLogoutAlertMessage] = useState(false);
 
-  const auth = (e) => {
-    e.preventDefault();
-    if (user)
-      window.open(`${process.env.REACT_APP_API_URL}/auth/logout`, "_self");
-    else {
-      window.open(`${process.env.REACT_APP_API_URL}/auth/google`, "_self");
-    }
+  // OPEN
+  const openLoginAlert = () => setOpenLoginAlertMessage(true);
+  const openLogoutAlert = () => setOpenLogoutAlertMessage(true);
+
+  // CLOSE
+  const closeLoginAlert = () => setOpenLoginAlertMessage(false);
+  const closeLogoutAlert = () => setOpenLogoutAlertMessage(false);
+
+  // PRODUCTS MENU ON RESPONSIVE MODE
+  const [open, setOpen] = useState(false);
+
+  const openProductsMenu = () => {
+    setOpen(!open);
   };
 
   const classes = useStyles();
   const [state, setState] = useState({
     left: false,
   });
-
-  // PRODUCTS MENU ON RESPONSIVE MODE
-  const [open, setOpen] = useState(false);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -102,7 +99,7 @@ function Header() {
     "EN",
   ];
 
-  const productItems = [
+  const productMenuItems = [
     "Martial arts",
     "Training gear",
     "Clothing/Apparel",
@@ -110,18 +107,8 @@ function Header() {
     "Promotions",
   ];
 
-  const openProductsMenu = () => {
-    setOpen(!open);
-  };
-
   const list = (anchor) => (
-    <div
-      role="presentation"
-      /*
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}*/
-      className="responsiveMenu"
-    >
+    <div role="presentation" className="responsiveMenu">
       <List>
         <ListItem button className="a">
           <ListItemText>Pesquisa</ListItemText>
@@ -130,11 +117,15 @@ function Header() {
       <List>
         <ListItem button onClick={openProductsMenu}>
           <ListItemText primary="Products" />
-          {open ? <ExpandLess /> : <ExpandMore />}
+          {open ? (
+            <ExpandLess className="menuIcon" />
+          ) : (
+            <ExpandMore className="menuIcon" />
+          )}
         </ListItem>
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            {productItems.map((productItem) => (
+            {productMenuItems.map((productItem) => (
               <ListItem
                 key={productItem}
                 button
@@ -146,6 +137,24 @@ function Header() {
             ))}
           </List>
         </Collapse>
+        <ListItem>
+          {!user ? (
+            <GoogleLogin
+              clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+              buttonText="Login"
+              onSuccess={responseGoogleLogin}
+              onFailure={responseGoogleLogin}
+              cookiePolicy={"single_host_origin"}
+              isSignedIn={true}
+            />
+          ) : (
+            <GoogleLogout
+              clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+              buttonText="Logout"
+              onLogoutSuccess={responseGoogleLogout}
+            />
+          )}
+        </ListItem>
         {items.map((text, index) => (
           <ListItem key={text} button divider={true}>
             <ListItemText primary={text} />
@@ -155,24 +164,67 @@ function Header() {
     </div>
   );
 
+  // GOOGLE AUTH RESPONSES
+  // GOOGLE AUTH LOGIN RESPONSE
+  const responseGoogleLogin = async (response) => {
+    const { profileObj } = await response;
+    setUser(profileObj);
+    openLoginAlert();
+    dispatch(login(profileObj));
+    axios
+      .post("/auth/", {
+        name: profileObj.name,
+        googleId: profileObj.googleId,
+        profileImageUrl: profileObj.imageUrl,
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // GOOGLE AUTH LOGOUT RESPONSE
+  const responseGoogleLogout = () => {
+    setUser("");
+    openLogoutAlert();
+    dispatch(logout());
+  };
+
   return (
     <div className="header">
+      <Snackbar
+        open={openLoginAlertMessage}
+        autoHideDuration={6000}
+        onClose={closeLoginAlert}
+      >
+        <Alert onClose={closeLoginAlert} severity="success">
+          Login Successfully!
+        </Alert>
+      </Snackbar>
+
+      <Snackbar
+        open={openLogoutAlertMessage}
+        autoHideDuration={6000}
+        onClose={closeLogoutAlert}
+      >
+        <Alert onClose={closeLogoutAlert} severity="error">
+          Logout Successfully!
+        </Alert>
+      </Snackbar>
+
       <div className="header__left">
         <ul className="header__leftList">
           <li className="header__leftItem">
-            <a href="#">Products</a>
+            <a href="https://arawaza.com/shop/">Products</a>
           </li>
           <li className="header__leftItem">
-            <a href="#">On Sale</a>
+            <a href="https://arawaza.com/product-category/on-sale/">On Sale</a>
           </li>
           <li className="header__leftItem">
-            <a href="#">Find a Store</a>
+            <a href="https://arawaza.com/find-a-store/">Find a Store</a>
           </li>
           <li className="header__leftItem">
-            <a href="#">Videos</a>
+            <a href="https://arawaza.com/videos/">Videos</a>
           </li>
           <li className="header__leftItem">
-            <a href="#">About Us</a>
+            <a href="https://arawaza.com/about-us/">About Us</a>
           </li>
         </ul>
       </div>
@@ -183,32 +235,47 @@ function Header() {
       <div className="header__right">
         <ul className="header__rightList">
           <li className="header__rightItem">
-            <a href="#">Home</a>
-          </li>
-          <li className="header__rightItem" onClick={auth}>
-            {!user ? <a href="#">Login with Google</a> : <a href="#">Logout</a>}
+            <button>Home</button>
           </li>
           <li className="header__rightItem">
-            <a href="#">Wholesale</a>
+            <a href="https://arawaza.com/wholesale/">Wholesale</a>
           </li>
           <li className="header__rightItem">
-            <a href="#">EN</a>
+            <button>EN</button>
           </li>
           <li className="header__rightItem">
-            <a href="#">
+            <button>
               <SearchIcon />
-            </a>
+            </button>
+          </li>
+          <li className="header__rightItem">
+            {!user ? (
+              <GoogleLogin
+                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                buttonText="Login"
+                onSuccess={responseGoogleLogin}
+                onFailure={responseGoogleLogin}
+                cookiePolicy={"single_host_origin"}
+                isSignedIn={true}
+              />
+            ) : (
+              <GoogleLogout
+                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                buttonText="Logout"
+                onLogoutSuccess={responseGoogleLogout}
+              />
+            )}
           </li>
           {user ? (
             <li className="header__rightItem responsive">
               <Chip
-                avatar={<Avatar alt={user.name} src={user.profileImageUrl} />}
+                avatar={<Avatar alt={user.name} src={user.imageUrl} />}
                 label={user.name}
               />
             </li>
           ) : null}
           <li className="header__rightItem responsive">
-            <a href="#">
+            <button>
               <Badge
                 badgeContent={0}
                 showZero
@@ -218,7 +285,7 @@ function Header() {
               >
                 <ShoppingBasketIcon />
               </Badge>
-            </a>
+            </button>
           </li>
           <li className="header__rightItem responsive">
             <div className="header__menuResponsiveWrapper">

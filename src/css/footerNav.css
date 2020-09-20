@@ -15,16 +15,19 @@
 }
 
 .footerNav__contactTel {
-  font-size: 20px;
-  color: #ca0017;
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
+  font-size: 20px !important;
+  color: #ca0017 !important;
+  margin-bottom: 15px !important;
+  display: flex !important;
+  align-items: center !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+  text-transform: lowercase !important;
 }
 
 .footerNav__contactTel:hover {
-  cursor: pointer;
-  text-decoration: underline;
+  cursor: pointer !important;
+  text-decoration: underline !important;
 }
 
 .footerNav__contactTel > .MuiSvgIcon-root {
@@ -38,23 +41,26 @@
   line-height: 1.5rem;
 }
 
-.footerNav__contactOtherTel > a {
+.footerNav__contactOtherTel > .MuiButton-root {
   color: #ffffff;
+  cursor: pointer;
+  line-height: 1;
 }
 
-.footerNav__contactOtherTel > a:hover {
+.footerNav__contactOtherTel > .MuiButton-root:hover {
   text-decoration: underline;
 }
 
 .footerNav__email {
-  font-size: 15px;
-  text-decoration: underline;
-  color: #ffffff;
+  font-size: 15px !important;
+  text-decoration: underline !important;
+  color: #ffffff !important;
+  text-transform: lowercase !important;
 }
 
 .footerNav__email:hover {
-  cursor: pointer;
-  text-decoration: none;
+  cursor: pointer !important;
+  text-decoration: none !important;
 }
 
 .footerNav__socialMedia {

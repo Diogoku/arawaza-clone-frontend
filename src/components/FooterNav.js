@@ -4,6 +4,7 @@ import React from "react";
 import FooterNavList from "./FooterNavList";
 
 // MATERIAL-UI
+import Button from "@material-ui/core/Button";
 import PhoneIcon from "@material-ui/icons/Phone";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import TwitterIcon from "@material-ui/icons/Twitter";
@@ -56,16 +57,16 @@ function FooterNav() {
 
       <div className="footerNav__contact">
         <h5 className="footerNavList__title">Contact Arawaza</h5>
-        <a className="footerNav__contactTel">
+        <Button className="footerNav__contactTel">
           <PhoneIcon /> 1-800-563-6785
-        </a>
+        </Button>
         <div className="footerNav__contactOtherTel">
-          Local: <a>1 450-477-4410</a>
+          Local: <Button>1 450-477-4410</Button>
           <br />
-          Fax: <a>1 450-477-4410</a>
+          Fax: <Button>1 450-477-4410</Button>
         </div>
 
-        <a className="footerNav__email">sales@arawaza.com</a>
+        <Button className="footerNav__email">sales@arawaza.com</Button>
         <div className="footerNav__socialMedia">
           <YouTubeIcon />
           <TwitterIcon />

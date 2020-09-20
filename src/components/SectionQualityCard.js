@@ -7,13 +7,13 @@ function SectionQualityCard({ imgSrc, imgAlt, title, text }) {
   return (
     <div className="sectionQualityCard">
       <img className="sectionQualityCard__image" src={imgSrc} alt={imgAlt} />
-      <h3>
-        {title.map((letter) => {
-          return letter;
-        })}
-      </h3>
-      {text.map((line) => {
-        return <p className="sectionQualityCard__text">{line}</p>;
+      <h3>{title}</h3>
+      {text.map((line, index) => {
+        return (
+          <p className="sectionQualityCard__text" key={index}>
+            {line}
+          </p>
+        );
       })}
     </div>
   );

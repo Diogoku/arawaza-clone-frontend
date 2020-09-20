@@ -7,6 +7,10 @@
   align-items: center;
 }
 
+.menuIcon {
+  color: #c4c4c4;
+}
+
 /* LEFT */
 
 .header__leftList {
@@ -28,7 +32,7 @@
   position: relative;
   font-size: 14px;
   text-decoration: none;
-  color: white;
+  color: #ffffff;
   letter-spacing: 0.3px;
 }
 
@@ -74,7 +78,17 @@
   padding: 0;
 }
 
+.header__rightItem > button {
+  background-color: transparent;
+  border: none;
+}
+
+.header__rightItem > button:hover {
+  cursor: pointer;
+}
+
 .header__rightItem > a,
+.header__rightItem > button,
 .header__menuResponsive {
   font-size: 14px;
   position: relative;
@@ -83,7 +97,8 @@
   text-decoration: none;
 }
 
-.header__rightItem > a::before {
+.header__rightItem > a::before,
+.header__rightItem > button::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -95,11 +110,13 @@
   transform-origin: right;
 }
 
-.header__rightItem > a:hover {
+.header__rightItem > a:hover,
+.header__rightItem > button:hover {
   color: white;
 }
 
-.header__rightItem > a:hover::before {
+.header__rightItem > a:hover::before,
+.header__rightItem > button:hover::before {
   transform: scaleX(1);
   color: white;
 }
@@ -125,7 +142,7 @@
 }
 
 .MuiListItemText-root:hover {
-  color: white;
+  color: #ffffff;
 }
 
 .MuiBadge-anchorOriginTopRightRectangle {
@@ -152,7 +169,12 @@
   }
 }
 
-@media only screen and (max-width: 849px) {
+@media only screen and (max-width: 900px) {
+  .header {
+    flex-direction: column;
+    row-gap: 1rem;
+  }
+
   .header__left {
     display: none;
   }
@@ -161,18 +183,15 @@
     display: inline;
   }
 
+  .header__rigth {
+    flex-wrap: wrap;
+  }
+
   .header__rightItem {
     display: none;
   }
 
   .responsive {
     display: inline;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .header {
-    flex-direction: column;
-    row-gap: 1rem;
   }
 }

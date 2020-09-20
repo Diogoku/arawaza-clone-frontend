@@ -20,7 +20,10 @@ function FooterBanner() {
       </div>
       <div className="footerBanner__content">
         <div className="footerBanner__rightMini">
-          <img src="https://arawaza.com/wp-content/themes/basel-child/images/arawaza-professionnal-martial-arts-equipment-promotion.jpg" />
+          <img
+            src="https://arawaza.com/wp-content/themes/basel-child/images/arawaza-professionnal-martial-arts-equipment-promotion.jpg"
+            alt="Arawaza professional martial arts equipment promotion"
+          />
           <div className="footerBanner__rightMini__content">
             <h4>
               Get <span>5%</span> off

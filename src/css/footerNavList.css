@@ -30,12 +30,21 @@
   row-gap: 15px;
 }
 
-.footerNavList__list > a {
+.footerNavList__list > .MuiButton-root {
   color: #a2a2a2;
   font-size: 15px;
   transition: color 0.2s ease-in;
+  text-transform: capitalize;
+  line-height: 1;
+  min-width: unset;
+  font-family: "Karla", sans-serif !important;
+  letter-spacing: 0;
 }
 
-.footerNavList__list > a:hover {
+.footerNavList__list > .MuiButton-root > .MuiButton-label {
+  justify-content: left;
+}
+
+.footerNavList__list > .MuiButton-root:hover {
   color: #ffffff;
 }

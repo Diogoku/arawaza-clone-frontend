@@ -1,35 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 
 // CSS
 import "../css/sectionProductCard.css";
 
-function SectionProductCard({
-  productTitle,
-  image,
-  imageHover,
-  price,
-  productLink,
-}) {
-  const [src, setSrc] = useState(image);
+function SectionProductCard({ title, image, imageHover, price, link }) {
+  const src = image;
 
   return (
     <div className="sectionProductCard">
-      <a href={productLink}>
+      <a href={link}>
         <img
           onMouseOver={(e) => (e.currentTarget.src = imageHover)}
           onMouseOut={(e) => (e.currentTarget.src = image)}
           className="sectionProductCard__image"
           src={src}
+          alt=""
         />
       </a>
       <h3 className="sectionProductCard__productTittle">
-        <a href={productLink}>{productTitle}</a>
+        <a href={link}>{title}</a>
       </h3>
       <div className="wrapp-swap">
         <div className="swap-elements">
-          {price}
+          &#36;{price}
           <div>
-            <a className="productLink" href={productLink}>
+            <a className="productLink" href={link}>
               More details
             </a>
           </div>

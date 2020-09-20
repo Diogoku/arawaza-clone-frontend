@@ -11,7 +11,7 @@ function SectionQuality() {
     imgSrc:
       "https://arawaza.com/wp-content/themes/basel-child/images/arawaza-highest-quality.png",
     imgAlt: "Highest quality",
-    title: ["Highest", <br />, "quality"],
+    title: "Highest quality",
     text: [
       "We offer high quality Martial Arts equipment: Karate, WKF products, Judo, Taekwondo, Kung Fu, Kobudo and much more…",
     ],
@@ -21,7 +21,7 @@ function SectionQuality() {
     imgSrc:
       "https://arawaza.com/wp-content/themes/basel-child/images/arawaza-large-inventory.png",
     imgAlt: "Large inventory",
-    title: ["Large", <br />, "inventory"],
+    title: "Large inventory",
     text: [
       "We hold a huge selection of martial arts inventory in our warehouses and offer multiple products to fulfill your needs.",
     ],
@@ -31,7 +31,7 @@ function SectionQuality() {
     imgSrc:
       "https://arawaza.com/wp-content/themes/basel-child/images/arawaza-fast-shipping.png",
     imgAlt: "Fast shipping",
-    title: ["Fast", <br />, "shipping"],
+    title: "Fast shipping",
     text: [
       "Fast shipping at the best price all over the world within 24 hours when inventory permits.",
     ],
@@ -41,13 +41,12 @@ function SectionQuality() {
     imgSrc:
       "https://arawaza.com/wp-content/uploads/2019/11/arawaza-wholesale-prices.png",
     imgAlt: "Wholesale prices",
-    title: ["Wholesale", <br />, "prices"],
+    title: "Wholesale prices",
     text: [
       "Own a Martial Arts Club?",
-      <p>
-        Take advantage of our{" "}
-        <a href="https://arawaza.com/wholesale/">wholesale prices</a>
-      </p>,
+
+      "Take advantage of our",
+      <a href="https://arawaza.com/wholesale/">wholesale prices</a>,
     ],
   };
 
